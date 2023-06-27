@@ -12,8 +12,8 @@ email=Captaindang@protonmail.com
 
 about=Save All is meant to be an improved version of the normal save feature because it also saves all temporary layers as permanent layers automatically. Additionally, when the plugin is run, the user is prompted for a location where they would like to save a new folder. Then, another prompt asks the user what they would like to name the project and it's container folder. Lastly, all vector and raster layers are saved into the folder, along with the QGIS project file itself. Each time the user uses this plugin, if they use the exact same folder name in the second prompt, the plugin will overwrite the previous save of the project in that folder, something that is not natively possible when considering a mix of permanent and temporary layers.
 
-tracker=http://bugs
-repository=http://repo
+tracker=https://github.com/CaptainDang/save_all/issues
+repository=https://github.com/CaptainDang/save_all
 # End of mandatory metadata
 
 # Recommended items:
@@ -29,7 +29,7 @@ homepage=http://homepage
 category=Plugins
 icon=icon.png
 # experimental flag
-experimental=True
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
