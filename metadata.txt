@@ -25,7 +25,7 @@ hasProcessingProvider=no
 # Tags are comma separated with spaces allowed
 tags=python
 
-homepage=http://homepage
+homepage=https://github.com/CaptainDang/save_all
 category=Plugins
 icon=icon.png
 # experimental flag
