@@ -5,7 +5,7 @@
 [general]
 name=Save All
 qgisMinimumVersion=3.0
-description=This plugin saves the qgis project file and all vector and raster layers into a user specified folder. All styles and formatting are saved with each layer, ensuring that they are opened up with the proper style the next time the project is opened.
+description=Save all workaround mainly intended for windows, as windows has unusual file saving behavior. This plugin saves the qgis project file and all vector and raster layers into a user specified folder. All styles and formatting are saved with each layer, ensuring that they are opened up with the proper style the next time the project is opened.
 version=0.1
 author=CaptainDang
 email=Captaindang@protonmail.com
