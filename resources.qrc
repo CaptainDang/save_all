@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/save_all" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
