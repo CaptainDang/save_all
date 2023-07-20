@@ -380,8 +380,11 @@ class SaveAll:
                         project.write(project_file_path)
                         iface.messageBar().pushMessage("Success: ", "QGIS project file saved successfully for the first time.", level=3)
 
+                else:
+                    iface.messageBar().pushMessage("No folder name entered. Please try again.", level=1)
+
             else:
-                iface.messageBar().pushMessage("No folder name entered. Please try again.", level=1)
+                iface.messageBar().pushMessage("No folder selected. Please try again.", level=1)
 
         else:
             iface.messageBar().pushMessage("Warning: ", "Not all layer names are unique. Make sure all layers have different names and try again.", level=1)
