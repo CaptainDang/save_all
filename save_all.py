@@ -316,28 +316,29 @@ class SaveAll:
                                         iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved. Error: Failed to save changes.".format(layer.name()), level=2)
 
                             # Save all other vector layers as GPKG files
-                            output_file = os.path.join(new_folder_path, layer_name + ".gpkg")
-                            if not os.path.exists(output_file):
-                                parameters = {
-                                    'LAYERS': [layer],
-                                    'OUTPUT': layer_file_path + ".gpkg",  # Specify the output file with .gpkg extension
-                                    'OVERWRITE': True,
-                                    'SAVE_STYLES': True,
-                                    'SAVE_METADATA': True,
-                                    'SELECTED_FEATURES_ONLY': False,
-                                    'EXPORT_RELATED_LAYERS': False}
+                            else:
+                                output_file = os.path.join(new_folder_path, layer_name + ".gpkg")
+                                if not os.path.exists(output_file):
+                                    parameters = {
+                                        'LAYERS': [layer],
+                                        'OUTPUT': layer_file_path + ".gpkg",  # Specify the output file with .gpkg extension
+                                        'OVERWRITE': True,
+                                        'SAVE_STYLES': True,
+                                        'SAVE_METADATA': True,
+                                        'SELECTED_FEATURES_ONLY': False,
+                                        'EXPORT_RELATED_LAYERS': False}
 
-                                feedback = QgsProcessingFeedback()
+                                    feedback = QgsProcessingFeedback()
 
-                                # Execute the package algorithm
-                                try:
-                                    result = processing.run("native:package", parameters, feedback=feedback)
-                                    if result['OUTPUT']:
-                                        pass
-                                    else:
-                                        iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved.".format(layer.name()), level=2)
-                                except QgsProcessingException as e:
-                                    iface.messageBar().pushMessage("Error: ", "An error occurred while packaging layer '{}': '{}'".format(layer.name(), str(e)), level=2)
+                                    # Execute the package algorithm
+                                    try:
+                                        result = processing.run("native:package", parameters, feedback=feedback)
+                                        if result['OUTPUT']:
+                                            pass
+                                        else:
+                                            iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved.".format(layer.name()), level=2)
+                                    except QgsProcessingException as e:
+                                        iface.messageBar().pushMessage("Error: ", "An error occurred while packaging layer '{}': '{}'".format(layer.name(), str(e)), level=2)
 
                             # Sets the layer's data source to the newly created path, replaces temp layers with their permanent ones
                             layer.setDataSource(output_file, layer.name(), "ogr")
