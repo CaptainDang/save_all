@@ -388,3 +388,4 @@ class SaveAll:
 
         else:
             iface.messageBar().pushMessage("Warning: ", "Not all layer names are unique. Make sure all layers have different names and try again.", level=1)
+
