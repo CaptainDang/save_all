@@ -5,12 +5,12 @@
 [general]
 name=Save All
 qgisMinimumVersion=3.0
-description=Save all workaround mainly intended for windows, as windows has unusual file saving behavior. This plugin saves the qgis project file and all vector and raster layers into a user specified folder. All styles and formatting are saved with each layer, ensuring that they are opened up with the proper style the next time the project is opened.
-version=0.1
+description=File saving script that saves qgis project file and all vector and raster layers into user-specified folder. Automatically detects file type and saves as that file type (supports SHP, GPKG, KML, CSV, and TIF). All styles and formatting are saved with each layer (except for KML), ensuring that they are opened up with the proper style the next time the project is opened. Temporary layers are made permanent automatically.
+version=1.0
 author=CaptainDang
 email=Captaindang@protonmail.com
 
-about=Save All is meant to be an improved version of the normal save feature because it also saves all temporary layers as permanent layers automatically. Additionally, when the plugin is run, the user is prompted for a location where they would like to save a new folder. Then, another prompt asks the user what they would like to name the project and it's container folder. Lastly, all vector and raster layers are saved into the folder, along with the QGIS project file itself. Each time the user uses this plugin, if they use the exact same folder name in the second prompt, the plugin will overwrite the previous save of the project in that folder, something that is not natively possible when considering a mix of permanent and temporary layers.
+about=Save All is an improved save plugin because it also saves all temporary layers as permanent layers automatically. When the plugin is run, the user is prompted for a location where they would like to save a new folder. Then, another prompt asks the user what they would like to name the project and it's container folder. Lastly, all vector and raster layers are saved into the folder, along with the QGIS project file itself. Each time the user uses this plugin, if they use the exact same folder name in the second prompt, the plugin will overwrite the previous save of the project in that folder.
 
 tracker=https://github.com/CaptainDang/save_all/issues
 repository=https://github.com/CaptainDang/save_all
@@ -20,7 +20,7 @@ repository=https://github.com/CaptainDang/save_all
 
 hasProcessingProvider=no
 # Uncomment the following line and add your changelog:
-# changelog=
+changelog= v1.0: Added functionality to automatically detect CSV, SHP, and KML/KMZ layers and save as their respective file types. Added ability to detect layers without geometry and save as CSV. Improved UI text prompts to be more user-friendly
 
 # Tags are comma separated with spaces allowed
 tags=python
@@ -37,10 +37,10 @@ deprecated=False
 # Since QGIS 3.8, a comma separated list of plugins to be installed
 # (or upgraded) can be specified.
 # Check the documentation for more information.
-# plugin_dependencies=none
+# plugin_dependencies=
 
 Category of the plugin: Raster, Vector, Database or Web
-# category=Raster, Vector
+# category=
 
 # If the plugin can run on QGIS Server.
 server=False
