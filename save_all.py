@@ -21,6 +21,11 @@
  *                                                                         *
  ***************************************************************************/
 """
+# Initialize Qt resources from file resources.py
+from .resources import *
+# Import the code for the dialog
+from .save_all_dialog import SaveAllDialog
+
 import os
 import os.path
 import processing
