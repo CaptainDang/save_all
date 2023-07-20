@@ -188,6 +188,8 @@ class SaveAll:
     def run(self):
         """Run method that performs all the real work"""
 
+        failedSaves = []
+
         # Function to sanitize layer name by replacing special characters with an underscore
         def sanitize(layer_name):
             forbidden_chars = r'<>:"/\|?*'
@@ -260,6 +262,7 @@ class SaveAll:
                                     if error != QgsVectorFileWriter.NoError:
                                         # Failure message
                                         iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved. Error: {}".format(layer.name(), error_string), level=2)
+                                        failedSaves.append(layer_name)
                                 else:
                                     # CSV file already exists in the folder, perform a normal save
                                     layer.startEditing()
@@ -268,6 +271,7 @@ class SaveAll:
                                     else:
                                         # Failure message
                                         iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved. Error: Failed to save changes.".format(layer.name()), level=2)
+                                        failedSaves.append(layer_name)
 
                             # Save no geometry layers as CSV files
                             elif layer.wkbType() == 100:
@@ -276,6 +280,7 @@ class SaveAll:
                                 if error != QgsVectorFileWriter.NoError:
                                     # Failure message
                                     iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved. Error: {}".format(layer.name(), error_string), level=2)
+                                    failedSaves.append(layer_name)
 
                             # Save KML or KMZ layers as KML files
                             elif layerStorage == "LIBKML":
@@ -287,6 +292,7 @@ class SaveAll:
                                     if error != QgsVectorFileWriter.NoError:
                                         # Failure message
                                         iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved. Error: {}".format(layer.name(), error_string), level=2)
+                                        failedSaves.append(layer_name)
                                 else:
                                     # KML file already exists in the folder, perform a normal save
                                     layer.startEditing()
@@ -295,6 +301,7 @@ class SaveAll:
                                     else:
                                         # Failure message
                                         iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved. Error: Failed to save changes.".format(layer.name()), level=2)
+                                        failedSaves.append(layer_name)
 
                             # Save SHP layers as SHP files
                             elif layerStorage == "ESRI Shapefile":
@@ -306,6 +313,7 @@ class SaveAll:
                                     if error != QgsVectorFileWriter.NoError:
                                         # Failure message
                                         iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved. Error: {}".format(layer.name(), error_string), level=2)
+                                        failedSaves.append(layer_name)
                                 else:
                                     # SHP file already exists in the folder, perform a normal save
                                     layer.startEditing()
@@ -314,6 +322,7 @@ class SaveAll:
                                     else:
                                         # Failure message
                                         iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved. Error: Failed to save changes.".format(layer.name()), level=2)
+                                        failedSaves.append(layer_name)
 
                             # Save all other vector layers as GPKG files
                             else:
@@ -321,7 +330,7 @@ class SaveAll:
                                 if not os.path.exists(output_file):
                                     parameters = {
                                         'LAYERS': [layer],
-                                        'OUTPUT': layer_file_path + ".gpkg",  # Specify the output file with .gpkg extension
+                                        'OUTPUT': layer_file_path + ".gpkg",
                                         'OVERWRITE': True,
                                         'SAVE_STYLES': True,
                                         'SAVE_METADATA': True,
@@ -337,6 +346,7 @@ class SaveAll:
                                             pass
                                         else:
                                             iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved.".format(layer.name()), level=2)
+                                            failedSaves.append(layer_name)
                                     except QgsProcessingException as e:
                                         iface.messageBar().pushMessage("Error: ", "An error occurred while packaging layer '{}': '{}'".format(layer.name(), str(e)), level=2)
 
@@ -366,7 +376,15 @@ class SaveAll:
                                 provider.crs()
                             )
 
-                    iface.messageBar().pushMessage("Success: ", "All layers saved.", level=3, duration=1)
+                    if len(failedSaves) > 0:
+                        msg_box = QMessageBox()
+                        msg_box.setIcon(QMessageBox.Critical)
+                        msg_box.setWindowTitle("Unsaved Layers")
+                        msg_box.setText(
+                            "Not all layers were successfully saved. Unsaved Layers: {}".format(", ".join(failedSaves)))
+                        msg_box.exec_()
+                    else:
+                        iface.messageBar().pushMessage("Success: ", "All layers saved.", level=3, duration=3)
 
                     # Set the QGIS project file name and the project path and get the project instance
                     project_file_name = folder_name + ".qgs"
@@ -381,11 +399,10 @@ class SaveAll:
                         iface.messageBar().pushMessage("Success: ", "QGIS project file saved successfully for the first time.", level=3)
 
                 else:
-                    iface.messageBar().pushMessage("No folder name entered. Please try again.", level=1)
+                    iface.messageBar().pushMessage("No folder name entered. Please try again.", level=1, duration=9)
 
             else:
-                iface.messageBar().pushMessage("No folder selected. Please try again.", level=1)
+                iface.messageBar().pushMessage("No folder selected. Please try again.", level=1, duration=9)
 
         else:
-            iface.messageBar().pushMessage("Warning: ", "Not all layer names are unique. Make sure all layers have different names and try again.", level=1)
-
+            iface.messageBar().pushMessage("Warning: ", "Not all layer names are unique. Make sure all layers have different names and try again.", level=1, duration=9)
