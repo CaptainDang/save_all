@@ -302,7 +302,7 @@ class SaveAll:
 
                                 # SHP file does not exist in the folder, write it for the first time
                                 if not os.path.exists(output_file):
-                                    error, error_string = QgsVectorFileWriter.writeAsVectorFormat(layer, layer_file_path, "utf-8", layer.crs(), "ESRI Shapefile", onlySelected=False, symbologyExport=True)
+                                    error, error_string = QgsVectorFileWriter.writeAsVectorFormat(layer, output_file, "utf-8", layer.crs(), "ESRI Shapefile", onlySelected=False, symbologyExport=True)
                                     if error != QgsVectorFileWriter.NoError:
                                         # Failure message
                                         iface.messageBar().pushMessage("Failed: ", "Layer '{}' was not saved. Error: {}".format(layer.name(), error_string), level=2)

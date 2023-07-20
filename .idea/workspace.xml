@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="971c1ca7-51c8-4899-b5bb-31bf745ad1d4" name="Changes" comment="Fixed error">
-      <change beforePath="$PROJECT_DIR$/save_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/save_all.py" afterDir="false" />
+    <list default="true" id="971c1ca7-51c8-4899-b5bb-31bf745ad1d4" name="Changes" comment="Fixed bug">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,13 +23,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/SpencerHao/PycharmProjects/Outlook_to_Box/OutlookToBox.py"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/SpencerHao/PycharmProjects/Outlook_to_Box/OutlookToBox.py&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,7 +63,31 @@
       <option name="project" value="LOCAL" />
       <updated>1689874765671</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Merged versions">
+      <option name="closed" value="true" />
+      <created>1689875111053</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689875111053</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fixed bug">
+      <option name="closed" value="true" />
+      <created>1689875176910</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689875176910</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixed bug">
+      <option name="closed" value="true" />
+      <created>1689875203694</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689875203694</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -81,6 +105,8 @@
     <MESSAGE value="Added CSV, KML, and SHP functionality. Improved UI prompts" />
     <MESSAGE value="Fixed import statements" />
     <MESSAGE value="Fixed error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed error" />
+    <MESSAGE value="Merged versions" />
+    <MESSAGE value="Fixed bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug" />
   </component>
 </project>
