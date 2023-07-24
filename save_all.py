@@ -30,6 +30,7 @@ import os
 import os.path
 import processing
 from qgis.PyQt.QtCore import *
+from qgis.core import *
 from qgis.PyQt.QtGui import QIcon
 from qgis.gui import QgsMessageBar
 from PyQt5.QtWidgets import *
